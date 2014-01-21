@@ -1,8 +1,8 @@
 # Sinatra Url Shortener
 
-##Learning Competencies
+## Learning Competencies
 
-##Summary
+## Summary
 
  We're going to build a simple link shortener, a la [bitly](http://bitly.com/).
 
@@ -109,9 +109,9 @@ These facts can be recorded in both SQL Land and in Ruby Land, like this:
   </tr>
 </table>
 
-##Releases
-###Release 0
+## Releases
+### Release 0
 
-##Optimize Your Learning
+## Optimize Your Learning
 
-##Resources
+## Resources
