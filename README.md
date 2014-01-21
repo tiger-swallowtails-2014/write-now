@@ -1,8 +1,8 @@
-# Sinatra Url Shortener 
- 
-##Learning Competencies 
+# Sinatra Url Shortener
 
-##Summary 
+##Learning Competencies
+
+##Summary
 
  We're going to build a simple link shortener, a la [bitly](http://bitly.com/).
 
@@ -107,11 +107,11 @@ These facts can be recorded in both SQL Land and in Ruby Land, like this:
     <td><code>UNIQUE INDEX</code> on <code>email</code> field</td>
     <td><code>validates :email, :uniqueness => true</code></td>
   </tr>
-</table> 
+</table>
 
 ##Releases
-###Release 0 
+###Release 0
 
-##Optimize Your Learning 
+##Optimize Your Learning
 
 ##Resources
