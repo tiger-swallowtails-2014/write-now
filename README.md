@@ -78,16 +78,14 @@ validations][] that express logic unique to our application domain.
 The rule of thumb is that where we can, we want to always express constraints
 in Ruby Land and also express them in SQL Land where feasible.
 
-### Add Error Handling
+### Release 3: Add Error Handling
 
 When you try to save (create or update) an ActiveRecord object that has invalid
 data, ActiveRecord will fail.  Some methods like `create!` and `save!` throw an
 exception.  Others like `create`  (without the `!` bang) return the  resulting
 object whether the object was saved successfully to the database or not, while
 `save` will return `false` if perform_validation is true and any validations
-fail.  See [create][]
-and [save][] for more
-information.
+fail.  See [create][] and [save][] for more information.
 
 You can always call [valid? or invalid?][valid invalid] on an ActiveRecord
 object to see whether its data is valid or invalid.
@@ -136,6 +134,16 @@ These facts can be recorded in both SQL Land and in Ruby Land, like this:
   </tr>
 </table>
 
+### Learning your HTTP status codes
+
+Each HTTP transaction **MUST** return a status code.  The one you're familiar
+with is `404` (Not Found!).  You should investigate your app or watch the web
+server logs from Sinatra and see which HTTP codes it sends for a static page,
+or for a redirect.  Spend some time getting to know your [HTTP status codes].
+You will, **very likely** be asked about them in interviews as it's a way to
+separate the clowns from the people you want to hire.
+
+You may find them easier to memorize if you have help from [HTTP status cats]
 
 ## Resources
 
@@ -147,6 +155,8 @@ These facts can be recorded in both SQL Land and in Ruby Land, like this:
 * [ActiveRecord save][save]
 * [ActiveRecord's valid? &amp; invalid?][valid invalid]
 * [ActiveRecord's errors object][errors]
+* [HTTP status codes][]
+* [HTTP status cats][]
 
 [bitly]: http://bitly.com/
 [ActiveRecord validations]: http://guides.rubyonrails.org/active_record_validations.html.
@@ -156,3 +166,5 @@ These facts can be recorded in both SQL Land and in Ruby Land, like this:
 [save]: http://apidock.com/rails/ActiveRecord/Base/save
 [valid invalid]: http://guides.rubyonrails.org/active_record_validations.html#valid-questionmark-and-invalid-questionmark
 [errors]: http://guides.rubyonrails.org/active_record_validations.html#validations-overview-errors
+[HTTP status codes]: http://en.wikipedia.org/wiki/List_of_HTTP_status_codes
+[HTTP status cats]: http://httpcats.herokuapp.com/
