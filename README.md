@@ -51,7 +51,7 @@ times someone has visited the shortened URL.  Add code to the appropriate place
 in your controller code so that any time someone hits a short URL the counter
 for the appropriate `Url` is incremented by 1.
 
-### Add Validations
+### Release 2: Add Validations
 
 Add a validation to your `Url` model so that only `Urls` with valid URLs get
 saved to the database.  Read up on [ActiveRecord validations][]
