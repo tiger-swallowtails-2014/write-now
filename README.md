@@ -2,9 +2,9 @@
 
 ## Learning Competencies
 
-* model data flow throughout an application
-* use redirect
-* use `ActiveRecord` callbacks
+* Map the flow of data through a web application
+* Use redirect
+* Use Active Record callbacks
 
 ## Summary
 
@@ -93,7 +93,9 @@ object to see whether its data is valid or invalid.
 Use this and the [errors][] method to display a helpful error message if a user
 enters an invalid URL, giving them the opportunity to correct their error.
 
-## More on Validations, Constraints, and Database Consistency
+## Optimize Your Learning
+
+### More on Validations, Constraints, and Database Consistency
 
 We often want to put constraints on what sort of data can go into our database.
 This way we can guarantee that all data in the database conforms to certain
@@ -143,7 +145,7 @@ or for a redirect.  Spend some time getting to know your [HTTP status codes].
 You will, **very likely** be asked about them in interviews as it's a way to
 separate the clowns from the people you want to hire.
 
-You may find them easier to memorize if you have help from [HTTP status cats]
+You may find them easier to memorize if you have help from [HTTP status cats][]
 
 ## Resources
 
