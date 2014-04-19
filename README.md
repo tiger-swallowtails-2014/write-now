@@ -5,6 +5,9 @@
 * Map the flow of data through a web application
 * Use redirect
 * Use Active Record callbacks
+* Implement a user authorization scheme to limit unauthorized access to specific pages in a web application
+* Write tests for complex web applications
+* Deploy your application to Heroku
 
 ## Summary
 
@@ -51,7 +54,82 @@ times someone has visited the shortened URL.  Add code to the appropriate place
 in your controller code so that any time someone hits a short URL the counter
 for the appropriate `Url` is incremented by 1.
 
-### Release 2: Add Validations
+### Release 2: User Authentication
+
+Now its time for things to get complicated. Let's implement a login and logout
+feature for our URL shortener!
+
+The core flow of the app should remain the same, however a person might choose
+to log in or create an account.In the event that they're logged in when they shorten
+a URL, this `Url` should now be associated with their user account.  In other words,
+a `Url` belongs to a `User` and a `User` has many `Urls`.
+
+**Note**: Don't worry about implement the above user-centric logic yet.  First
+get all the URL shortening and user authentication code working.  Make sure
+people can log in and can shorten URLs regardless of whether they're logged in
+or not.
+
+There's going to be a lot going in your controller! Try to keep the code as
+readable and organized as possible. A file structure like this might make sense:
+
+1. `app/controllers/urls.rb`, which contains the routes related to listing, creating, and redirecting `Url` objects
+2. `app/controllers/sessions.rb`, which contains the routes related to logging in and logging out
+3. `app/controllers/users.rb`, which contains the routes related to creating, displaying, and editing users
+
+### Release 3: Conditional Logic
+
+Now that you've got basic user authentication and URL shortening working, its
+time to stitch these features together. Depending on whether a user is signed
+in or not, your site will change dynamically.
+
+People should be able to create short URLs regardless of whether they're logged
+in or not.  That is, the `user_id` field on the `urls` table could possible be
+`NULL`.
+
+However, if a user *is* logged in, when we create a URL it should set the
+`user_id` to whatever the `user_id` of the currently logged-in user is.  This
+information *should not* be a part of the form that a user submits &mdash; it
+would be trivial for someone to change the content of the form and submit as
+any user. The information should, instead, be stored in the users' session.
+
+Users should now be able to view their URLs on their profile page, which should
+look like this:
+
+```ruby
+get '/users/:id' do
+end
+```
+
+This should display all the links that a particular user has created.  If I'm
+viewing my *own* profile page, show the number of clicks next to each link so I
+can see how awesome my link-sharing skills are.
+
+Since you'll be checking the session in every route, your routes are probably pretty
+repetative. But theres a better way! You can create helper methods to DRY up your
+controller and view code. You could use something like this:
+
+```ruby
+helpers do
+  # This will return the current user, if they exist
+  # Replace with code that works with your application
+  def current_user
+    if session[:user_id]
+      @current_user ||= User.find_by_id(session[:user_id])
+    end
+  end
+
+  # Returns true if current_user exists, false otherwise
+  def logged_in?
+    !current_user.nil?
+  end
+end
+```
+
+Your controller can now call `current_user` to get the currently authenticated
+user, if they exist.  This means we don't have to rely on user-submitted data
+to determine what user created a short URL.
+
+### Release 4: Add Validations
 
 Add a validation to your `Url` model so that only `Urls` with valid URLs get
 saved to the database.  Read up on [ActiveRecord validations][]
@@ -78,7 +156,7 @@ validations][] that express logic unique to our application domain.
 The rule of thumb is that where we can, we want to always express constraints
 in Ruby Land and also express them in SQL Land where feasible.
 
-### Release 3: Add Error Handling
+### Release 5: Add Error Handling
 
 When you try to save (create or update) an ActiveRecord object that has invalid
 data, ActiveRecord will fail.  Some methods like `create!` and `save!` throw an
@@ -136,16 +214,34 @@ These facts can be recorded in both SQL Land and in Ruby Land, like this:
   </tr>
 </table>
 
-### Learning your HTTP status codes
+### Release 6: Testing!
 
-Each HTTP transaction **MUST** return a status code.  The one you're familiar
-with is `404` (Not Found!).  You should investigate your app or watch the web
-server logs from Sinatra and see which HTTP codes it sends for a static page,
-or for a redirect.  Spend some time getting to know your [HTTP status codes].
-You will, **very likely** be asked about them in interviews as it's a way to
-separate the clowns from the people you want to hire.
+You've been testing your models and controllers as you go, right? ...right? Well
+if you haven't, now is a good time to start. Make sure that all your validations
+and associations are tested, as well as all the transforms and side effects of
+your controller actions (a.k.a. routes). If a route updates a database, renders
+a page, or handles an edge case, you should write a test proving that your code works.
 
-You may find them easier to memorize if you have help from [HTTP status cats][]
+Many of your routes are now dependent on sessions, which will cause your tests
+to break. But that's okay! You can simply fake a user's session using rack-test,
+as the 'get' and 'post' method take an optional third argument which corresponds
+to the rack environment hash, where information about sessions is stored. It
+would look something like this:
+
+```ruby
+it "should create a new post" do
+  fake_params = { title: "some title", content: "some content" }
+  fake_session = { 'rack.session' => { user_id: 20 } }
+  expect{
+    post '/some_route', fake_params, fake_session
+  }.to change{ Post.count }.by(1)
+end
+```
+
+### Release 7: Deployment
+
+You're feature complete with 100% test coverage. It's time to push this thing into
+production! Get the app up on Heroku, and call it a night.
 
 ## Resources
 
