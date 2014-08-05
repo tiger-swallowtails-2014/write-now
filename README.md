@@ -40,9 +40,16 @@ write a failing test for the `POST /urls` route. Keep the
 2. Act
 3. Assert
 
-steps in mind, since they'll help you set up the test for your POST route.
+steps in mind, since they'll help you set up the test for your POST route. Here's
+the general format for an empty controller test:
 
-We'll also need a URL that redirects us to the full (unshortened) URL. As 
+```ruby
+require 'spec_helper'
+describe "index_controller" do
+  # specs go here!
+end
+
+We'll also need a route that redirects us to the full (unshortened) URL. As 
 always, write a test first.  If you've never used bitly, use it now to get a 
 feel for how it works.
 
