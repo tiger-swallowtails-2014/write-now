@@ -17,10 +17,6 @@ get '/:short_url' do
   redirect to "#{@url.url}"
 end
 
-# get '/:short_url' do
-#   @url = Url.find_by_short_url(params[:short_url])
-# end
-
 post '/:short_url/count' do
 
 end

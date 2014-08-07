@@ -8,13 +8,11 @@ describe "index_controller" do
     end
   end
 
-
   describe "POST /" do
-    it "renders a successful status" do
+    it "successfully adds new url" do
       expect {
         post "/", url: "http://www.google.com"
       }.to change { Url.count }
-
     end
   end
 
@@ -37,7 +35,6 @@ describe "index_controller" do
           expect(last_response).to be_redirect
           follow_redirect!
           last_request.url.should == 'http://www.google.com/'
-          # expect(response).to redirect_to(@user_url.url)
     end
   end
 
