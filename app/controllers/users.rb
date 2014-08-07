@@ -6,9 +6,9 @@ post '/signup' do
   user = User.create(params)
 end
 
-get '/login' do
+# get '/login' do
 
-end
+# end
 
 # post '/login' page do
 
