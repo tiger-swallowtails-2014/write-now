@@ -1,28 +1,21 @@
-== README
+WriteNow
+=========
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+WriteNow - a motivational productivity app for writers
 
-Things you may want to cover:
+#MVP
+* Good test coverage
+* Clean code
+* Clean Git history
+* Heroku deployment
+* create a user
+* be able to log in as a user
+* input a goal - with word count, time to completion
+* calculate user's progress toward goal
+* visualizing progress towards user goal
+  * show user's current pace
+  * user can edit goal
+  * users can receive badges at intervals throughout achieving goal
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+#Team Members
+**Elena Sharma**, Clark Feusier, Jared Chevalier, Michele Murphy
