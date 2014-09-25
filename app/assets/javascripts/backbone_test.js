@@ -1,1 +1,1 @@
-console.log(Backbone);
+console.log(Backbone.Model);
