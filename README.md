@@ -1,9 +1,9 @@
-WriteNow
-=========
+## WriteNow
 
-WriteNow - a motivational productivity app for writers
+***WriteNow - a motivational productivity app for writers***
 
-#MVP
+### MVP
+
 * Good test coverage
 * Clean code
 * Clean Git history
@@ -14,8 +14,9 @@ WriteNow - a motivational productivity app for writers
 * calculate user's progress toward goal
 * visualizing progress towards user goal
   * show user's current pace
-  * user can edit goal
-  * users can receive badges at intervals throughout achieving goal
+* user can edit goal
+* users can receive badges at intervals throughout achieving goal
 
-#Team Members
+#### Team Members
+
 **Elena Sharma**, Clark Feusier, Jared Chevalier, Michele Murphy
