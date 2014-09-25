@@ -1,0 +1,1 @@
+console.log(Handlebars.Model + " c'est handlebars");
