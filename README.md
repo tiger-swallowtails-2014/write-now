@@ -2,6 +2,8 @@
 
 ***WriteNow - a motivational productivity app for writers***
 
+[WriteNow](http://write-now-dbc.herokuapp.com/)
+
 ### MVP
 
 * Good test coverage
