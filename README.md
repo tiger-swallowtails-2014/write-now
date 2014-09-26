@@ -1,8 +1,4 @@
-## WriteNow
-
-***WriteNow - a motivational productivity app for writers***
-
-[WriteNow](http://write-now-dbc.herokuapp.com/)
+## [WriteNow](http://write-now-dbc.herokuapp.com/) - ***a motivational productivity app for writers***
 
 ### MVP
 
