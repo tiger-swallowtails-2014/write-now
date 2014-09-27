@@ -7,7 +7,7 @@ class CreateProjects < ActiveRecord::Migration
       t.date :goal_deadline_date
       t.boolean :active, null: false, default: true
       t.integer :current_wordcount, null: false, default: 0
-
+      t.belongs_to :user
       t.timestamps
     end
   end
