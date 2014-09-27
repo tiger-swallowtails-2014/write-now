@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include BCrypt
   validates :email, :password_hash, presence: true
+  validates :email, length: { minimum: 1 }
   validates :email, uniqueness: true
   has_many :projects
 
