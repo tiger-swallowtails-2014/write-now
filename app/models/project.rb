@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   validates :title, :wordcount_goal, :active, :current_wordcount, presence: true
-  validates :title, length: { min: 1, max: 130 }
+  validates :title, length: { in: 1..130 }
   validates :goal_time_limit, :current_wordcount, numericality: true
   validate :project_deadline_date_cannot_be_in_the_past
 
