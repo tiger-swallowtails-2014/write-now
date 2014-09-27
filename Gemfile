@@ -16,13 +16,14 @@ gem 'bcrypt'
 
 group :development, :test do
 	gem 'rspec-rails'
+  gem 'rspec-collection_matchers'
 end
 
 group :test do
 	gem 'shoulda-matchers'
 	gem 'factory_girl_rails'
-	gem 'faker'
 	gem 'capybara'
+  gem 'faker'
 	gem 'selenium-webdriver'
 	gem 'database_cleaner'
 end
