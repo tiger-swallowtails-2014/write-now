@@ -22,8 +22,8 @@ end
 group :test do
 	gem 'shoulda-matchers'
 	gem 'factory_girl_rails'
-	gem 'faker'
 	gem 'capybara'
+  gem 'faker'
 	gem 'selenium-webdriver'
 	gem 'database_cleaner'
 end
