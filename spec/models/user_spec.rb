@@ -10,7 +10,7 @@ describe User do
     end
 
     it "is invalid without an email" do
-      expect(User.new(email: nil)).to have(1).errors_on(:email)
+      expect(User.new(email: nil)).to have(2).errors_on(:email)
     end
 
     it "is invalid with a duplicate email" do
