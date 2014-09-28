@@ -6,6 +6,6 @@ class Project < ActiveRecord::Base
   belongs_to :user
 
   def project_deadline_date_cannot_be_in_the_past
-    goal_deadline_date < Date.today if errors.add(:goal_deadline_date, "has to be in the future!")
+    errors.add(:goal_deadline_date, "has to be in the future!") if goal_deadline_date < Date.today 
   end
 end
