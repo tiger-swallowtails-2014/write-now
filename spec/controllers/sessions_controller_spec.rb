@@ -2,7 +2,10 @@ require 'rails_helper'
 
 describe SessionsController do
   context '#new' do
-    it "GET :new"
+    it "GET :new" do
+      get :new
+      expect(response).to be_success
+    end
   end
 
   context '#create' do
