@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy', as: 'logout'
 
   # user routes with named helpers (just #new and #create actions)
-  get '/users/new' => 'users#new', as: 'signup_form'
+  get '/signup' => 'users#new', as: 'signup_form'
   post '/users' => 'users#create', as: 'signup'
 
   # nested users and projects resources
