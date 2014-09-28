@@ -6,5 +6,6 @@ FactoryGirl.define do
 		goal_deadline_date {'2015-12-01'}
 		active true
 		current_wordcount 5
+    user
 	end
 end

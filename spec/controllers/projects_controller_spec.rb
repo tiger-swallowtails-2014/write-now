@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe ProjectsController, :type => :controller do
+describe ProjectsController do
   let!(:project) { create :project }
 
   describe 'GET #index' do
@@ -11,7 +11,7 @@ describe ProjectsController, :type => :controller do
 
     it "says 'SOMETHING FROM THE PAGE GOES HERE' " do
       get :index
-      expect(response.body).to match /SOMETHING FROM/im
+      expect(response.body).to match(/SOMETHING FROM/im)
       # Line above from: https://www.relishapp.com/rspec/rspec-rails/v/3-1/docs/controller-specs/render-views - see that page to finish off this test
     end
   end
@@ -46,7 +46,7 @@ describe ProjectsController, :type => :controller do
 
     it "says 'SOMETHING FROM THE PAGE GOES HERE' " do
       get :show
-      expect(response.body).to match /SOMETHING FROM/im
+      expect(response.body).to match(/SOMETHING FROM/im)
       # Line above from: https://www.relishapp.com/rspec/rspec-rails/v/3-1/docs/controller-specs/render-views - see that page to finish off this test
     end
   end

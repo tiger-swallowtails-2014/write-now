@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe UsersController, :type => :controller do
+describe UsersController do
 	let!(:user) { create :user }
 	describe 'GET #new' do
 		it "assigns a new user to @user" do
@@ -23,7 +23,7 @@ describe UsersController, :type => :controller do
 
 		it "redirects to home page" do
 			delete :destroy, user_id: user
-			expect(response).to redirect_to root_url
+			expect(response).to redirect_to root_path
 		end
 	end
 
@@ -36,7 +36,7 @@ describe UsersController, :type => :controller do
 
 	describe 'GET #show' do
 		it "should return a 200 status code" do
-			question_path, id="1"
+			user_path(user)
 			expect(response.status).to be(200)
 		end
 	end
