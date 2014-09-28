@@ -4,9 +4,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    @user.save!
-    redirect_to root_path
+    user = User.new(user_params)
+    if user.save
+      session[:user_id] = user.id
+      redirect_to root_path
+    else
+      flash[:error] = "Invalid account information. Try signing up again with different information."
+      redirect_to signup_form_path
+    end
   end
 
   private
