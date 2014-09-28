@@ -16,4 +16,5 @@
 //= require underscore-min
 //= require handlebars-min
 //= require backbone
+//= require bootstrap-sprockets
 //= require_tree .
