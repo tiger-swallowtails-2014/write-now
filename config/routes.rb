@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # root to #index action of global controller
-  root 'welcome#index'
+  root 'global#index'
 
   # login (sessions) routes with named helpers
   get '/login' => 'sessions#new', as: 'login_form'
