@@ -1,0 +1,11 @@
+<%= form_for [@user, @project], url: user_projects_path do |f| %>
+  <%= f.label :title, "Title" %>
+  <%= f.text_field :title %>
+  <%= f.label :wordcount_goal, "Word-Count Goal" %>
+  <%= f.number_field :wordcount_goal %>
+  <%= f.label :goal_time_limit, "Goal Time Limit" %>
+  <%= f.number_field :goal_time_limit %>
+  <%= f.label :goal_deadline_date, "Goal Deadline Date" %>
+  <%= f.date_field :goal_deadline_date %>
+  <%= f.submit "Begin!" %>
+<% end %>
