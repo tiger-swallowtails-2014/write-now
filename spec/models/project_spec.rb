@@ -30,7 +30,7 @@ describe Project do
 
 		it "is invalid without a current wordcount" do
 			project = build(:project, current_wordcount: nil)
-			expect(project).to have(1).errors_on(:current_wordcount)
+			expect(project).to have(2).errors_on(:current_wordcount)
 		end
 	end
 
