@@ -9,10 +9,6 @@ class GlobalController < ApplicationController
   end
 
   private
-    def current_user
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    end
-
     def active_project
       current_user.projects.last.active if current_user.projects.any?
     end

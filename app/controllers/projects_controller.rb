@@ -28,7 +28,6 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @user = current_user
     @project = Project.find(params[:id])
     @project.update_attributes(project_params)
     if check_goal_type == :days
@@ -40,19 +39,14 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    @user = current_user
-    @project = @user.projects.last
+    @project = current_user.projects.last
     @project.destroy
     redirect_to root_path
   end
 
   private
     def project_params
-      params.require(:project).permit(:title, :wordcount_goal, :goal_time_limit, :goal_deadline_date, :user_id)
-    end
-
-    def current_user
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+      params.require(:project).permit(:title, :wordcount_goal, :goal_time_limit, :goal_deadline_date, :user_id, :current_wordcount)
     end
 
     def check_goal_type
