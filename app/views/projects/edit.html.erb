@@ -6,7 +6,11 @@
   <%= f.label :wordcount_goal, "Wordcount Goal" %>
   <%= f.text_field :wordcount_goal %>
 
-  <%= render @partial %>
+  <% if @goal_field == :days %>
+    <%=  render partial: 'days', locals: { f: f } %>
+  <% else %>
+    <%=  render partial: 'hours', locals: { f: f } %>
+  <% end %>
 
   <%= f.submit "Edit Project!" %>
 <% end %>
