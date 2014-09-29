@@ -12,7 +12,7 @@ class Project < ActiveRecord::Base
   def calculate_pace_needed_w_per_day_date
     wc_diff = self.wordcount_goal - self.current_wordcount
     date_diff = self.goal_deadline_date.mjd - Date.today.mjd
-    "#{wc_diff / date_diff} words per day"
+    "#{wc_diff / date_diff} words per day"  #CR don't return a string here - do that in the view
   end
 
   def calculate_pace_needed_w_per_day_hours

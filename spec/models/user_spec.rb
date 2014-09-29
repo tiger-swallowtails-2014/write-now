@@ -1,5 +1,6 @@
 require 'rails_helper'
 
+# CR Try using shoulda matchers here - it is a lot less code.
 describe User do
   context "migration validations" do
     it "is valid with an email and password hash" do

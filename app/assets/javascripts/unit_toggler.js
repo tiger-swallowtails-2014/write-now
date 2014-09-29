@@ -1,3 +1,5 @@
+// CR create a Project MVC for these to bind to. Use templates
+
 $(function() {
   $('.toggleDeadlineUnitDate').on('click', function(e) {
     e.preventDefault();

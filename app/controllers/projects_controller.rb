@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
   def new
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:user_id]) #CR use current_user
     @project = Project.new
   end
 
@@ -17,8 +17,9 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = current_user #CR not needed
     @project = @user.projects.last
+    # CR this looks like a view helper method + a bit of logic on the model
     if check_goal_type == :days
       @goal_field = :days
     else
@@ -31,6 +32,7 @@ class ProjectsController < ApplicationController
     @user = current_user
     @project = Project.find(params[:id])
     @project.update_attributes(project_params)
+    # CR move to model and view helper
     if check_goal_type == :days
       @pace_needed = @project.calculate_pace_needed_w_per_day_date
     else
@@ -50,7 +52,7 @@ class ProjectsController < ApplicationController
     def project_params
       params.require(:project).permit(:title, :wordcount_goal, :goal_time_limit, :goal_deadline_date, :user_id)
     end
-
+# CR not needed if on application controller
     def current_user
       @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end

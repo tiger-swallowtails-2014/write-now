@@ -75,7 +75,7 @@ describe ProjectsController do
     it "changes project's attributes" do
       put :update, project_id: project,
         project: attributes_for(:project, title: "Not A Great Novel", current_wordcount: 500)
-        expect(project.title).to eq("Not A Greate Novel")
+        expect(project.title).to eq("Not A Great Novel")
         expect(current_wordcount).to eq(500)
     end
   end

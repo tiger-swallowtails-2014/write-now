@@ -1,5 +1,6 @@
 <h2>Title: <%= @project.title %></h2>
 <h3>Goal wordcount: <%= @project.wordcount_goal %></h3>
+<!-- CR move this to model or view helper -->
 <h3>Words left: <%= @project.wordcount_goal - @project.current_wordcount %></h3>
 
 <%#<h3>Goal date: <%= @project.goal_deadline_date %>

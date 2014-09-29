@@ -1,4 +1,5 @@
 <div class = user-image>
+  <!-- CR add if gravatar -->
   <%= image_tag @user.gravatar_url %>
 <h4><%= @user.email %></h4>
 </div>
@@ -6,6 +7,7 @@
 <br>
 <div>
   <h3>Your Write Now History</h3>
+  <!-- Replace if with loop not including last project and then last project -->
   <% @user.projects.each do |project| %>
     <% if project != @user.projects.last %>
       <%= project.title %>

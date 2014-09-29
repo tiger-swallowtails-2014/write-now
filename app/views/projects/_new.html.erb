@@ -1,3 +1,4 @@
+<!-- CR - with form_for you shouldn't need the url or method in a RESTful route -->
 <%= form_for [@user, @project], url: user_projects_path(@user), method: :post do |f| %>
   <%= f.label :title, "Title" %>
   <%= f.text_field :title %>
