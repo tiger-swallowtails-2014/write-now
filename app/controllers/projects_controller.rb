@@ -12,7 +12,7 @@ class ProjectsController < ApplicationController
       redirect_to root_path
     else
       flash.now[:error] = "Learn how to type ... if you want to be a writer."
-      render :new
+      render 'projects/_new'
     end
   end
 
