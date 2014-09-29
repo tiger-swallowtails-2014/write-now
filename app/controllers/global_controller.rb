@@ -1,6 +1,8 @@
 class GlobalController < ApplicationController
   def index
   	if current_user && active_project
+  		@user = current_user
+  		@project = @user.projects.last
 	  	render "projects/_current_project"
 	  elsif current_user && (active_project == false)
 	  	@user = current_user
