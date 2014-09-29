@@ -9,11 +9,14 @@ class Project < ActiveRecord::Base
     errors.add(:goal_deadline_date, "has to be in the future!") if goal_deadline_date && goal_deadline_date < Date.today
   end
 
-  def calculate_pace_needed_w_per_day
-    # wc_diff = self.wordcount_goal - self.current_wordcount
-    # date_diff = self.goal_deadline_date.mjd - Date.today.mjd
-    # wc_diff / date_diff
-    return "TODO: Reimplement pace calculation based on either Date OR Hours"
-    # opposite will be nil value in DB
+  def calculate_pace_needed_w_per_day_date
+    wc_diff = self.wordcount_goal - self.current_wordcount
+    date_diff = self.goal_deadline_date.mjd - Date.today.mjd
+    wc_diff / date_diff
+    p "pace needed in words per day"
+  end
+
+  def calculate_pace_needed_w_per_day_hours
+    p "pace needed in words per hour"
   end
 end
