@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
   validates :email, length: { minimum: 1 }
   validates :email, uniqueness: true
 
-  include Gravtastic
-  gravtastic :size => 120
+  # include Gravtastic
+  # gravtastic :size => 120
 end

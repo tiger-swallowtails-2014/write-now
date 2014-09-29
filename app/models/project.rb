@@ -16,6 +16,8 @@ class Project < ActiveRecord::Base
   end
 
   def calculate_pace_needed_w_per_day_hours
-    p "pace needed in words per hour"
+    wc_diff = self.wordcount_goal - self.current_wordcount
+    time_to_write = self.goal_time_limit
+    wc_diff / time_to_write
   end
 end
