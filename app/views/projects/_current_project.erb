@@ -4,3 +4,5 @@
 <h3>Goal date: <%= @project.goal_deadline_date %></h3>
 <h3>Days left: <%= @project.goal_deadline_date.mjd - Date.today.mjd %> days</h3>
 <h3>Pace needed (words per day): <%= @pace_needed %></h3>
+
+<%= link_to "Edit Project", edit_user_project_path(:user_id => @user.id, :id => @project.id) %>
