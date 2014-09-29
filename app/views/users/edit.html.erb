@@ -5,3 +5,5 @@
   <%= f.password_field :password %>
   <%= f.submit "Update Account" %>
 <% end %>
+
+<%= link_to "Delete your account", user_path(@user), method: :delete %>

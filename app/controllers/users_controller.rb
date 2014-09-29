@@ -32,6 +32,13 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:id])
+    if @user.destroy
+      render root_path
+    else
+      flash.now[:error] = "Account Deletion failed! Please try again."
+      redirect_to root_path
+    end
   end
 
   private
