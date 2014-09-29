@@ -18,8 +18,35 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  private
-    def user_params
-      params.require(:user).permit(:email, :password)
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      redirect_to @user
+    else
+      render :edit
     end
+  end
+
+  def destroy
+    if current_user.destroy
+      session[:user_id] = nil
+      redirect_to root_path
+    else
+      flash.now[:error] = "Account Deletion failed! Please try again."
+      redirect_to root_path
+    end
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:email, :password)
+  end
+
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
 end
