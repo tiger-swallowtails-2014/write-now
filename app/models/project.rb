@@ -6,8 +6,12 @@ class Project < ActiveRecord::Base
   belongs_to :user
 
   def project_deadline_date_cannot_be_in_the_past
-    if goal_deadline_date && goal_deadline_date < Date.today
-      errors.add(:goal_deadline_date, "has to be in the future!")
-    end
+    errors.add(:goal_deadline_date, "has to be in the future!") if goal_deadline_date && goal_deadline_date < Date.today
+  end
+
+  def calculate_pace_needed_w_per_day
+    wc_diff = self.wordcount_goal - self.current_wordcount
+    date_diff = self.goal_deadline_date.mjd - Date.today.mjd
+    wc_diff / date_diff
   end
 end
