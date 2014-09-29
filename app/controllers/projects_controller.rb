@@ -1,11 +1,11 @@
 class ProjectsController < ApplicationController
   def new
-    @user = User.find(params[:user_id])
+    @user = current_user
     @project = Project.new
   end
 
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @project = @user.projects.build(project_params)
 
     if @project.save
@@ -28,6 +28,7 @@ class ProjectsController < ApplicationController
   end
 
   def update
+    @user = current_user
     @project = Project.find(params[:id])
     @project.update_attributes(project_params)
     if check_goal_type == :days
