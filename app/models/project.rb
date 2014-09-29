@@ -12,12 +12,12 @@ class Project < ActiveRecord::Base
   def calculate_pace_needed_w_per_day_date
     wc_diff = self.wordcount_goal - self.current_wordcount
     date_diff = self.goal_deadline_date.mjd - Date.today.mjd
-    "#{wc_diff / date_diff} words per day"
+    wc_diff / date_diff
   end
 
   def calculate_pace_needed_w_per_day_hours
     wc_diff = self.wordcount_goal - self.current_wordcount
     time_to_write = self.goal_time_limit
-    "#{wc_diff / time_to_write} words per hour"
+    wc_diff / time_to_write
   end
 end
