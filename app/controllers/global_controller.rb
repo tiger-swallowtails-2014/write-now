@@ -33,10 +33,6 @@ class GlobalController < ApplicationController
     end
 
     def check_goal_type
-      if @project.goal_time_limit.nil?
-        return :days
-      else
-        return :hours
-      end
+      @project.goal_time_limit ? (return :hours) : (return :days)
     end
 end

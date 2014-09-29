@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
     if check_goal_type == :days
       @pace_needed = @project.calculate_pace_needed_w_per_day_date
     else
-      @pace_needed = @projcet.calculate_pace_needed_w_per_day_hours
+      @pace_needed = @project.calculate_pace_needed_w_per_day_hours
     end
     render "_current_project"
   end
