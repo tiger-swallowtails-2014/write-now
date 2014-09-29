@@ -16,8 +16,26 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def edit
+    @user = current_user
+    @project = @user.projects.last
+    render :edit
+  end
+
+  def update
+    @user = current_user
+    @project = Project.find(params[:id])
+    @project.update_attributes(project_params)
+    @pace_needed = @project.calculate_pace_needed_w_per_day
+    render "_current_project"
+  end
+
   private
     def project_params
       params.require(:project).permit(:title, :wordcount_goal, :goal_time_limit, :goal_deadline_date, :user_id)
+    end
+
+    def current_user
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
     end
 end
