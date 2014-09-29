@@ -43,7 +43,7 @@ class ProjectsController < ApplicationController
     @user = current_user
     @project = @user.projects.last
     @project.destroy
-    redirect_to 'global#index'
+    redirect_to root_path
   end
 
   private
