@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
   belongs_to :user
   validates :title, :wordcount_goal, :active, :current_wordcount, presence: true
   validates :title, length: { in: 1..130 }
-  validates :goal_time_limit, :current_wordcount, numericality: true
+  validates :wordcount_goal, :current_wordcount, numericality: true
   validate :project_deadline_date_cannot_be_in_the_past
 
   def project_deadline_date_cannot_be_in_the_past
@@ -10,8 +10,10 @@ class Project < ActiveRecord::Base
   end
 
   def calculate_pace_needed_w_per_day
-    wc_diff = self.wordcount_goal - self.current_wordcount
-    date_diff = self.goal_deadline_date.mjd - Date.today.mjd
-    wc_diff / date_diff
+    # wc_diff = self.wordcount_goal - self.current_wordcount
+    # date_diff = self.goal_deadline_date.mjd - Date.today.mjd
+    # wc_diff / date_diff
+    return "TODO: Reimplement pace calculation based on either Date OR Hours"
+    # opposite will be nil value in DB
   end
 end
