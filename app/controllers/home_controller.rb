@@ -1,4 +1,4 @@
-class GlobalController < ApplicationController
+class HomeController < ApplicationController
   def index
     if !current_user
       render "_squeeze"
@@ -9,10 +9,6 @@ class GlobalController < ApplicationController
   end
 
   private
-    def current_user
-      @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    end
-
     def active_project
       current_user.projects.last.active if current_user.projects.any?
     end
@@ -24,15 +20,11 @@ class GlobalController < ApplicationController
 
     def active_project_displayer
       @project = @user.projects.last
-      if check_goal_type == :days
+      if @project.check_goal_type == :days
         @pace_needed = @project.calculate_pace_needed_w_per_day_date
       else
         @pace_needed = @project.calculate_pace_needed_w_per_day_hours
       end
       render "projects/_current_project"
-    end
-
-    def check_goal_type
-      @project.goal_time_limit ? (return :hours) : (return :days)
     end
 end
