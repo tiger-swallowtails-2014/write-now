@@ -24,6 +24,7 @@ class GlobalController < ApplicationController
 
     def active_project_displayer
       @project = @user.projects.last
+      @pace_needed = @project.calculate_pace_needed_w_per_day
       render "projects/_current_project"
     end
 end

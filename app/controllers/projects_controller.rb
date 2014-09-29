@@ -10,7 +10,6 @@ class ProjectsController < ApplicationController
 
     if @project.save
       redirect_to root_path
-      # TODO: write conditional rendering check on global controller index action
     else
       flash.now[:error] = "Learn how to type ... if you want to be a writer."
       render :new
