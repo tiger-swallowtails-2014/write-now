@@ -1,7 +1,11 @@
 class GlobalController < ApplicationController
   def index
-  	if current_user
+  	if current_user && active_project
 	  	render "projects/_current_project"
+	  elsif current_user && (active_project == false)
+	  	@user = current_user
+	  	@project = Project.new
+	  	render "projects/_new"
   	else
   		render "_squeeze"
 	  end
