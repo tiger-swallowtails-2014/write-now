@@ -1,1 +1,14 @@
-<h1>CURRENT PROJECT - WOOHOO!</h1>
+<h2>Title: <%= @project.title %></h2>
+<h3>Goal wordcount: <%= @project.wordcount_goal %>
+	Words left: <%= @project.wordcount_goal - @project.current_wordcount %></h3>
+
+
+<h3>Goal date: <%= @project.goal_deadline_date %>
+	
+	Days left: <%= @project.goal_deadline_date.mjd - Date.today.mjd %> days</h3>
+
+	<h3>Pace needed (words per day): <%= (@project.wordcount_goal - @project.current_wordcount) / (@project.goal_deadline_date.mjd - Date.today.mjd) %></h3>
+
+<!-- 	need to put all of these calculations into a controller -->
+
+<!-- need way to update current project esp. current wordcount -->
