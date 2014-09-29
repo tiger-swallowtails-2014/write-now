@@ -24,7 +24,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update_attributes(email: user_params[:email])
+    if @user.update_attributes(user_params)
       redirect_to @user
     else
       render :edit

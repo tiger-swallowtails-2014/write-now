@@ -1,5 +1,7 @@
 <%= form_for @user, url: user_path(@user) , action: :update do |f| %>
   <%= f.label :email, "Email" %>
   <%= f.text_field :email %>
+  <%= f.label :password, "Password" %>
+  <%= f.password_field :password %>
   <%= f.submit "Update Account" %>
 <% end %>
