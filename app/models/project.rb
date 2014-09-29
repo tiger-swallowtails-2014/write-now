@@ -20,4 +20,8 @@ class Project < ActiveRecord::Base
     time_to_write = self.goal_time_limit
     wc_diff / time_to_write
   end
+
+  def check_goal_type
+    self.goal_time_limit ? (return :hours) : (return :days)
+  end
 end

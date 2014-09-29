@@ -20,15 +20,11 @@ class GlobalController < ApplicationController
 
     def active_project_displayer
       @project = @user.projects.last
-      if check_goal_type == :days
+      if @project.check_goal_type == :days
         @pace_needed = @project.calculate_pace_needed_w_per_day_date
       else
         @pace_needed = @project.calculate_pace_needed_w_per_day_hours
       end
       render "projects/_current_project"
-    end
-
-    def check_goal_type
-      @project.goal_time_limit ? (return :hours) : (return :days)
     end
 end
