@@ -39,6 +39,13 @@ class ProjectsController < ApplicationController
     render "_current_project"
   end
 
+  def destroy
+    @user = current_user
+    @project = @user.projects.last
+    @project.destroy
+    redirect_to 'global#index'
+  end
+
   private
     def project_params
       params.require(:project).permit(:title, :wordcount_goal, :goal_time_limit, :goal_deadline_date, :user_id)

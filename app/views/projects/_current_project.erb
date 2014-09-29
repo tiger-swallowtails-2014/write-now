@@ -9,3 +9,7 @@
 <%# days</h3>%>
 <h3>Pace needed: <%= @pace_needed %></h3>
 <%= link_to "Edit Project", edit_user_project_path(:user_id => @user.id, :id => @project.id) %>
+
+<button class="deleteProject">Delete AJAX</button>
+
+<%= button_to "Delete Project", user_project_path(:user_id => @user.id, :id => @project.id), :method => :delete %>
