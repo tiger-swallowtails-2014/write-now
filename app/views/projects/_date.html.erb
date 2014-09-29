@@ -1,0 +1,6 @@
+<%= form_for [@user, @project], url: user_project_path(@user, @project), method: :patch do |f| %>
+
+<%= f.label :goal_deadline_date, "Goal Deadline Date" %>
+<%= f.date_field :goal_deadline_date %>
+
+<% end %>

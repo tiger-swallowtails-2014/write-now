@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
   def edit
     @user = current_user
     @project = @user.projects.last
+    @partial = partial_to_display
     render :edit
   end
 
@@ -31,6 +32,15 @@ class ProjectsController < ApplicationController
   end
 
   private
+    def partial_to_display
+      @project = @user.projects.last
+      if @project.goal_time_limit == nil
+        "time"
+      else
+        "date"
+      end
+    end
+
     def project_params
       params.require(:project).permit(:title, :wordcount_goal, :goal_time_limit, :goal_deadline_date, :user_id)
     end

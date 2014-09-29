@@ -1,0 +1,6 @@
+<%= form_for [@user, @project], url: user_project_path(@user, @project), method: :patch do |f| %>
+
+<%= f.label :goal_time_limit, "Goal Time Limit" %>
+<%= f.text_field :goal_time_limit %>
+
+<% end %>
