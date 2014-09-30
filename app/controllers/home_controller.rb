@@ -9,7 +9,7 @@ class HomeController < ApplicationController
         render "projects/_new"
       else
         @project = current_user.get_project
-        @pace_needed = @project.check_goal_type
+        @pace_needed = @project.calculate_pace
         render "projects/_current_project"
       end
     end
