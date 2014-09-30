@@ -2,14 +2,17 @@
 Necessary top-padding for fixed nav-bar! Don't remove this style.
 */
 body {
-    padding-top: 50px;
-    background: -webkit-linear-gradient(90deg, #1CD8D2 10%, #93EDC7 90%); /* Chrome 10+, Saf5.1+ */
-    background:    -moz-linear-gradient(90deg, #1CD8D2 10%, #93EDC7 90%); /* FF3.6+ */
-    background:     -ms-linear-gradient(90deg, #1CD8D2 10%, #93EDC7 90%); /* IE10 */
-    background:      -o-linear-gradient(90deg, #1CD8D2 10%, #93EDC7 90%); /* Opera 11.10+ */
-    background:         linear-gradient(90deg, #1CD8D2 10%, #93EDC7 90%); /* W3C */
+  padding-top: 50px;
 }
 
-.font_testing {
-    color: #ffd010;
+.maindiv {
+	background-color: #3BD6DF;
+	font-family: "HelveticaNeue-Medium";
+}
+
+.main_header {
+	font-size: 1000%;
+	text-align: center;
+	font-weight: 900;
+	text-shadow: 0 1px 5px rgba(0,0,0,0.5);
 }
