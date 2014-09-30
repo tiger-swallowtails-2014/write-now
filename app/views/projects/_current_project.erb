@@ -1,10 +1,10 @@
 <h2>Title: <%= @project.title %></h2>
-<h3>Goal wordcount: <%= @project.wordcount_goal %></h3>
-<h3>Words left: <%= @words_left %></h3>
+<h3>Goal wordcount: <span class="goalWordcount"><%= @project.wordcount_goal %></span></h3>
+<h3>Words left: <span class="wordsLeft"><%= @words_left %></span></h3>
 
-<h3><%= @pace_unit.capitalize%>s left: <%= @time_left %></h3>
+<h3><%= @pace_unit.capitalize%>s left: <span class="timeLeft"><%= @time_left %></span></h3>
 
-<h3>Pace needed: <%= @pace_needed %> words per <%= @pace_unit %></h3>
+<h3>Pace needed: <span class="paceNeeded"><%= @pace_needed %></span> words per <%= @pace_unit %></h3>
 <%= link_to "Edit Project", edit_user_project_path(:user_id => current_user.id, :id => @project.id) %>
 
 <%= link_to "Delete Project", user_project_path(:user_id => current_user.id, :id => @project.id), :method => :delete %>
