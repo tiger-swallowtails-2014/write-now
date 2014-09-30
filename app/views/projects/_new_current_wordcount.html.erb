@@ -1,4 +1,4 @@
-<%= form_for [@user, @project], url: user_project_path(@user, @project), method: :patch, remote: true do |f| %>
+<%= form_for [@user, @project], method: :patch do |f| %>
 	<%= f.label :current_wordcount, "Current Wordcount" %>
 	<%= f.text_field :current_wordcount %>
 

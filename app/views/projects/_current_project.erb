@@ -2,12 +2,14 @@
 <h3>Goal wordcount: <%= @project.wordcount_goal %></h3>
 <h3>Words left: <%= @project.wordcount_goal - @project.current_wordcount %></h3>
 
-<%#<h3>Goal date: <%= @project.goal_deadline_date %>
-<%#</h3>%>
-<%#
-<h3>Days left: <%= @project.goal_deadline_date.mjd - Date.today.mjd %>
-<%# days</h3>%>
-<h3>Pace needed: <%= @pace_needed %></h3>
+<% if @project.pace_unit == 'hour' %>
+  <h3>Hours left: <%= @project.hours_until_deadline %></h3>
+<% else %>
+  <h3>Goal date: <%= @project.goal_deadline_date %></h3>
+  <h3>Days left: <%= @project.goal_deadline_date.mjd - Date.today.mjd %></h3>
+<% end %>
+
+<h3>Pace needed: <%= @pace_needed %> words per <%= @pace_unit %></h3>
 <%= link_to "Edit Project", edit_user_project_path(:user_id => current_user.id, :id => @project.id) %>
 
 <%= link_to "Delete Project", user_project_path(:user_id => current_user.id, :id => @project.id), :method => :delete %>
