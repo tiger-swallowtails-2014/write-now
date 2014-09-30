@@ -28,10 +28,8 @@ class ProjectsController < ApplicationController
     @project.update_attributes(project_params)
     @pace_needed = @project.calculate_pace
 
-    # @project = current_user.get_project
     @words_left = @project.num_words_to_goal
     @time_left = @project.time_until_deadline
-    # @pace_unit = @project.pace_unit
     @pace_needed = @project.calculate_pace.floor
 
     render json: [@words_left, @time_left, @pace_needed]
