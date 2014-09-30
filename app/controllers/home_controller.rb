@@ -13,8 +13,12 @@ class HomeController < ApplicationController
         @words_left = @project.num_words_to_goal
         @time_left = @project.time_until_deadline
         @pace_unit = @project.pace_unit
-        @pace_needed = @project.calculate_pace.floor
-        render "/projects/_current_project"
+        @pace_needed = @project.calculate_pace
+        if @project.completed?
+          render "/projects/_completed_project"
+        else
+          render "/projects/_current_project"
+        end
       end
     end
   end

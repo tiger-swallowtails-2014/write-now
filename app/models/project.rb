@@ -52,10 +52,23 @@ class Project < ActiveRecord::Base
   end
 
   def completed?
-    true
+    self.wordcount_goal_reached? || self.goal_deadline_reached?
   end
 
-  def successful?
-
+  def wordcount_goal_reached?
+    self.wordcount_goal <= self.current_wordcount
   end
+
+  def goal_deadline_reached?
+    self.time_expired? || self.date_arrived?
+  end
+
+  def time_expired?
+    self.hours_until_deadline <= 0 if self.pace_unit == "hour"
+  end
+
+  def date_arrived?
+    self.days_until_deadline <= 0 if self.pace_unit == "day"
+  end
+
 end
