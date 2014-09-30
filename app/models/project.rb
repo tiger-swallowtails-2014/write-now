@@ -18,7 +18,7 @@ class Project < ActiveRecord::Base
   end
 
   def calculate_pace_per_hours
-    (self.num_words_to_goal / hours_until_deadline).to_f
+    (self.num_words_to_goal / hours_until_deadline).round(0)
   end
 
   def calculate_pace
@@ -36,7 +36,7 @@ class Project < ActiveRecord::Base
   def hours_until_deadline
     limit = self.goal_time_limit
     hours_passed = TimeDifference.between(Time.parse(DateTime.now.to_s), self.created_at.to_time).in_hours
-    limit - hours_passed
+    (limit - hours_passed).round(2)
   end
 
   def pace_unit
@@ -49,5 +49,13 @@ class Project < ActiveRecord::Base
 
   def active_project(current_user)
     current_user.projects.last if current_user.projects.last.active
+  end
+
+  def completed?
+    true
+  end
+
+  def successful?
+
   end
 end
