@@ -1,17 +1,17 @@
 class HomeController < ApplicationController
   def index
-    if current_user
+    if !current_user
+      render '_squeeze'
+    else
       @user = current_user
-      if current_user.projects.any?
-        @project = current_user.projects.last.active_project(current_user)
+      if current_user.projects.none?
+        @project = current_user.get_new_project_form
+        render "projects/_new"
+      else
+        @project = current_user.get_project
         @pace_needed = @project.check_goal_type
         render "projects/_current_project"
-      else
-        @project = Project.new
-        render "projects/_new"
       end
-    else
-      render "_squeeze"
     end
   end
 end

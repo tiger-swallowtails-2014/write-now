@@ -7,4 +7,12 @@ class User < ActiveRecord::Base
 
   # include Gravtastic
   # gravtastic :size => 120
+
+  def get_project
+    self.projects.last.active_project(self)
+  end
+
+  def get_new_project_form
+    Project.new
+  end
 end
