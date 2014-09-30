@@ -15,6 +15,8 @@ gem 'autoprefixer-rails'
 gem 'bcrypt'
 gem 'gravtastic'
 gem 'time_difference'
+gem 'chart-js-rails', '~> 0.0.7'
+
 
 group :development, :test do
 	gem 'rspec-rails'

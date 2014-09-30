@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require Chart
 //= require underscore-min
 //= require handlebars-min
 //= require backbone
