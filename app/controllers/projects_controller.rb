@@ -27,7 +27,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.update_attributes(project_params)
     @pace_needed = @project.calculate_pace
-    render "_current_project"
+    redirect_to root_path
   end
 
   def destroy

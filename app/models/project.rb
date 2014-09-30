@@ -14,7 +14,7 @@ class Project < ActiveRecord::Base
   end
 
   def calculate_pace_per_hours
-    (self.wordcount_goal - self.current_wordcount) / self.goal_time_limit
+    ((self.wordcount_goal - self.current_wordcount) / self.goal_time_limit).to_f
   end
 
   def calculate_pace
