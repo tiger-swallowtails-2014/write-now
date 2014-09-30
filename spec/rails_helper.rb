@@ -3,7 +3,6 @@ require 'spec_helper'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/collection_matchers'
-require 'shoulda/matchers'
 
 ActiveRecord::Migration.maintain_test_schema!
 
