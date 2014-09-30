@@ -3,8 +3,7 @@
 <h3>Words left: <%= @project.wordcount_goal - @project.current_wordcount %></h3>
 
 <% if @project.pace_unit == 'hour' %>
-  <h3>Timer Expiration: <%= @project.goal_time_limit %></h3>
-  <h3>Hours left: </h3>
+  <h3>Hours left: <%= @project.hours_until_deadline %></h3>
 <% else %>
   <h3>Goal date: <%= @project.goal_deadline_date %></h3>
   <h3>Days left: <%= @project.goal_deadline_date.mjd - Date.today.mjd %></h3>
