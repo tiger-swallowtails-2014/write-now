@@ -1,4 +1,4 @@
-<%= form_for [@user, @project], remote: true do |f| %>
+<%= form_for [@user, @project], remote: true, url: update_wordcount_path(@user, @project), html: { id: 'updateWordCount' } do |f| %>
 	<%= f.label :current_wordcount, "Current Wordcount" %>
 	<%= f.text_field :current_wordcount %>
 
