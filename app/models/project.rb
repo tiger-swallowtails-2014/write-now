@@ -59,6 +59,18 @@ class Project < ActiveRecord::Base
     self.wordcount_goal_reached? || self.goal_deadline_reached?
   end
 
+  def time_to_completion
+    self.pace_unit == "day" ? self.days_to_completion : self.hours_to_completion
+  end
+
+  def days_to_completion
+    (Date.today - self.created_at.to_date).to_f
+  end
+
+  def hours_to_completion
+    (self.days_to_completion / 60).to_f
+  end
+
   def wordcount_goal_reached?
     self.wordcount_goal <= self.current_wordcount
   end
