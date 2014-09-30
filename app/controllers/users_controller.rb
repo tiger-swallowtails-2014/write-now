@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @past_projects = @user.projects.slice(0..-1)
     @current_project = @user.projects.last
+    @quote = Quote.new.random_quote
   end
 
   def edit
