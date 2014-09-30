@@ -1,0 +1,7 @@
+<%= form_for [@user, @project], method: :patch do |f| %>
+	<%= f.label :current_wordcount, "Current Wordcount" %>
+	<%= f.text_field :current_wordcount %>
+
+	<%= f.submit "Update wordcount", :class => 'updateCurrentWordcount' %>
+
+<% end %>
