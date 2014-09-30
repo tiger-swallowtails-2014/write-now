@@ -26,11 +26,7 @@ class Project < ActiveRecord::Base
   end
 
   def time_until_deadline
-    if self.pace_unit == "day"
-      self.days_until_deadline.floor
-    else
-      self.hours_until_deadline.floor
-    end
+    self.pace_unit == "day" ? self.days_until_deadline : self.hours_until_deadline
   end
 
   def days_until_deadline
