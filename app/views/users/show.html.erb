@@ -1,12 +1,17 @@
 <div class = user-image>
-
-<h4><%= @user.email %></h4>
+  <%= image_tag @user.gravatar_url %>
+  <br>
+  <h4><%= @user.email %></h4>
+  <br>
 </div>
 
 <div>
-  <h3>Your WriteNow history</h3>
+  <h3>Past Projects</h3>
   <% @past_projects.each do |project| %>
-  	<%= project.title %>
+  <%= project.title %>
   <% end %>
+  <br>
+  <br>
+  <h3>Current Project</h3>
   <%= @current_project.title %> (Your current project!)
 </div>
