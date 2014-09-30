@@ -75,4 +75,8 @@ class Project < ActiveRecord::Base
     self.days_until_deadline <= 0 if self.pace_unit == "day"
   end
 
+  def successful_completion?
+    self.wordcount_goal_reached?
+  end
+
 end
