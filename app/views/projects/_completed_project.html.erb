@@ -1,0 +1,11 @@
+<div class="completed_project">
+  <h1>Your writing project <strong><em><%= @project.title.titleize %></em></strong> is over!</h1>
+
+  <div class="project_message">
+    <% if @successful %>
+      <h2>Great job achieving your goals!</h2>
+    <% else %>
+      <h2>Try harder next time, lazy ass</h2>
+    <% end %>
+  </div>
+</div>
