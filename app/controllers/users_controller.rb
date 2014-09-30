@@ -16,6 +16,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @past_projects = @user.projects.slice(0..-1)
+    @current_project = @user.projects.last
   end
 
   def edit
