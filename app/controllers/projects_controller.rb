@@ -30,11 +30,7 @@ class ProjectsController < ApplicationController
     @user = current_user
     @project = Project.find(params[:id])
     @project.update_attributes(project_params)
-    if @project.check_goal_type == :days
-      @pace_needed = @project.calculate_pace_needed_w_per_day_date
-    else
-      @pace_needed = @project.calculate_pace_needed_w_per_day_hours
-    end
+    @pace_needed = @project.check_goal_type
     render "_current_project"
   end
 
