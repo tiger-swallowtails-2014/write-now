@@ -10,3 +10,14 @@ quotes = Quote.create([
   {quote: "Atticus told me to delete the adjectives and I'd have the facts.", quoter: "Harper Lee" },
   {quote: "My English teacher said that a writer is the worst judge of his own work.", quoter: "Ilsa J. Bick" }
   ])
+
+prompts = Prompt.create([
+  {prompt: "If you really knew me you'd know..."},
+  {prompt: "Cat person or Dog person? Explain!"},
+  {prompt: "Name the 3 most important people in your life then explain why."},
+  {prompt: "Yoga is..."},
+  {prompt: "Why are you here, what's one thing you love and what's one thing quirky about you?"},
+  {prompt: "A metric shit ton of..."},
+  {prompt: "The cargo culting led to..."},
+  {prompt: "I am not my code. I am..."}
+  ])

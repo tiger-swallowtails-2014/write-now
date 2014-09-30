@@ -19,6 +19,7 @@ class UsersController < ApplicationController
     @past_projects = @user.projects.slice(0..-1)
     @current_project = @user.projects.last
     @quote = Quote.new.random_quote
+    @prompt = Prompt.new.random_prompt
   end
 
   def edit
