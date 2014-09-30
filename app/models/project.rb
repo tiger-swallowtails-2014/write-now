@@ -13,6 +13,10 @@ class Project < ActiveRecord::Base
     (self.wordcount_goal - self.current_wordcount) / days_until_deadline
   end
 
+  def calc_words_percent_completed
+    100 - ( (self.wordcount_goal.to_f - self.current_wordcount.to_f) / self.wordcount_goal.to_f * 100)
+  end
+
   def num_words_to_goal
     self.wordcount_goal - self.current_wordcount
   end
