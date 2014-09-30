@@ -34,7 +34,7 @@ class Project < ActiveRecord::Base
   end
 
   def days_until_deadline
-    (self.goal_deadline_date - Date.today).to_f if self.pace_unit == "day"
+    (self.goal_deadline_date - Date.today).round(0) if self.pace_unit == "day"
   end
 
   def hours_until_deadline
