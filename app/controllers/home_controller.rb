@@ -16,7 +16,7 @@ class HomeController < ApplicationController
         @percent_complete = @project.calc_words_percent_completed
         @pace_needed = @project.calculate_pace
         if @project.completed?
-          @successful = true
+          @successful = @project.successful_completion?
           render "/projects/_completed_project"
         else
           render "/projects/_current_project"
