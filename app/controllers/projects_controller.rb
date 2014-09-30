@@ -18,11 +18,7 @@ class ProjectsController < ApplicationController
   def edit
     @user = current_user
     @project = @user.projects.last
-    if @project.check_goal_type == :days
-      @goal_field = :days
-    else
-      @goal_field = :hours
-    end
+    @goal_field = @project.check_goal_type
     render :edit
   end
 
@@ -30,7 +26,7 @@ class ProjectsController < ApplicationController
     @user = current_user
     @project = Project.find(params[:id])
     @project.update_attributes(project_params)
-    @pace_needed = @project.check_goal_type
+    @pace_needed = @project.calculate_pace
     render "_current_project"
   end
 

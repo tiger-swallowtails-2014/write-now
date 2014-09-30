@@ -5,9 +5,6 @@ class User < ActiveRecord::Base
   validates :email, length: { minimum: 1 }
   validates :email, uniqueness: true
 
-  # include Gravtastic
-  # gravtastic :size => 120
-
   def get_project
     self.projects.last.active_project(self)
   end
