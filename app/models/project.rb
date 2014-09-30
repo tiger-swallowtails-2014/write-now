@@ -21,6 +21,10 @@ class Project < ActiveRecord::Base
     self.goal_time_limit ? self.calculate_pace_per_hours : self.calculate_pace_per_day
   end
 
+  def pace_unit
+    self.goal_time_limit ? "hour" : "day"
+  end
+
   def check_goal_type
     self.goal_time_limit ? :hours : :days
   end

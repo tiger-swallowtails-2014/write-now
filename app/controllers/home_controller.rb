@@ -10,6 +10,7 @@ class HomeController < ApplicationController
       else
         @project = current_user.get_project
         @pace_needed = @project.calculate_pace
+        @pace_unit = @project.pace_unit
         render "projects/_current_project"
       end
     end
