@@ -1,27 +1,14 @@
 require 'rails_helper'
 
 describe User do
+  let!(:user) { create :user }
   context "migration validations" do
-    it "is valid with an email and password hash" do
-      user = User.new(
-        email: "me@me.com",
-        password_digest: "god")
-      expect(user).to be_valid
-    end
+    it { should validate_presence_of(:email) }
+    it { should validate_presence_of(:password_digest) }
 
-    it "is invalid without an email" do
-      expect(User.new(email: nil)).to have(2).errors_on(:email)
-    end
+    it { should ensure_length_of(:email).is_at_least(1) }
 
-    it "is invalid with a duplicate email" do
-      User.create(email: "awesome@me.com", password_digest: "something")
-      user = User.new(email: "awesome@me.com", password_digest: "something")
-      expect(user).to have(1).errors_on(:email)
-    end
-
-    it "is invalid without an password digest" do
-      expect(User.new(password_digest: nil)).to have(1).errors_on(:password_digest)
-    end
+    it { should validate_uniqueness_of(:email) }
   end
 
   context "association validations" do
