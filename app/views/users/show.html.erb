@@ -2,15 +2,11 @@
 
 <h4><%= @user.email %></h4>
 </div>
-<br>
-<br>
+
 <div>
-  <h3>Your Write Now History</h3>
-  <% @user.projects.each do |project| %>
-    <% if project != @user.projects.last %>
-      <%= project.title %>
-    <% else %>
-      <%= project.title %> (Your current project!)
-    <% end %>
+  <h3>Your WriteNow history</h3>
+  <% @past_projects.each do |project| %>
+  	<%= project.title %>
   <% end %>
+  <%= @current_project.title %> (Your current project!)
 </div>

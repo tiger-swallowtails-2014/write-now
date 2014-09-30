@@ -13,16 +13,28 @@ class Project < ActiveRecord::Base
     (self.wordcount_goal - self.current_wordcount) / days_until_deadline
   end
 
+  def num_words_to_goal
+    self.wordcount_goal - self.current_wordcount
+  end
+
   def calculate_pace_per_hours
-    ((self.wordcount_goal - self.current_wordcount) / hours_until_deadline).to_f
+    (self.num_words_to_goal / hours_until_deadline).to_f
   end
 
   def calculate_pace
     self.goal_time_limit ? self.calculate_pace_per_hours : self.calculate_pace_per_day
   end
 
+  def time_until_deadline
+    if self.pace_unit == "day"
+      self.days_until_deadline.floor
+    else
+      self.hours_until_deadline.floor
+    end
+  end
+
   def days_until_deadline
-    (self.goal_deadline_date - Date.today).to_f
+    (self.goal_deadline_date - Date.today).to_f if self.pace_unit == "day"
   end
 
   def hours_until_deadline
