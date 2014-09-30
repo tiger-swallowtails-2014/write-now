@@ -12,4 +12,9 @@ class User < ActiveRecord::Base
   def get_new_project_form
     Project.new
   end
+
+  include Gravtastic
+  gravtastic :size => 120,
+            :default => "identicon"
+
 end
