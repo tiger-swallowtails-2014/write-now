@@ -13,12 +13,16 @@ class Project < ActiveRecord::Base
     (self.wordcount_goal - self.current_wordcount) / days_until_deadline
   end
 
+  def calc_words_percent_completed
+    100 - ( (self.wordcount_goal.to_f - self.current_wordcount.to_f) / self.wordcount_goal.to_f * 100)
+  end
+
   def num_words_to_goal
     self.wordcount_goal - self.current_wordcount
   end
 
   def calculate_pace_per_hours
-    (self.num_words_to_goal / hours_until_deadline).to_f
+    (self.num_words_to_goal / hours_until_deadline).round(0)
   end
 
   def calculate_pace
@@ -26,11 +30,7 @@ class Project < ActiveRecord::Base
   end
 
   def time_until_deadline
-    if self.pace_unit == "day"
-      self.days_until_deadline.floor
-    else
-      self.hours_until_deadline.floor
-    end
+    self.pace_unit == "day" ? self.days_until_deadline : self.hours_until_deadline
   end
 
   def days_until_deadline
@@ -40,7 +40,7 @@ class Project < ActiveRecord::Base
   def hours_until_deadline
     limit = self.goal_time_limit
     hours_passed = TimeDifference.between(Time.parse(DateTime.now.to_s), self.created_at.to_time).in_hours
-    limit - hours_passed
+    (limit - hours_passed).round(2)
   end
 
   def pace_unit
@@ -54,4 +54,29 @@ class Project < ActiveRecord::Base
   def active_project(current_user)
     current_user.projects.last if current_user.projects.last.active
   end
+
+  def completed?
+    self.wordcount_goal_reached? || self.goal_deadline_reached?
+  end
+
+  def wordcount_goal_reached?
+    self.wordcount_goal <= self.current_wordcount
+  end
+
+  def goal_deadline_reached?
+    self.time_expired? || self.date_arrived?
+  end
+
+  def time_expired?
+    self.hours_until_deadline <= 0 if self.pace_unit == "hour"
+  end
+
+  def date_arrived?
+    self.days_until_deadline <= 0 if self.pace_unit == "day"
+  end
+
+  def successful_completion?
+    self.wordcount_goal_reached?
+  end
+
 end
