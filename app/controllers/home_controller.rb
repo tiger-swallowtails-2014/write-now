@@ -13,6 +13,7 @@ class HomeController < ApplicationController
         @words_left = @project.num_words_to_goal
         @time_left = @project.time_until_deadline
         @pace_unit = @project.pace_unit
+        @percent_complete = @project.calc_words_percent_completed
         @pace_needed = @project.calculate_pace
         if @project.completed?
           render "/projects/_completed_project"
