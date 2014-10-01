@@ -1,8 +1,5 @@
 class Quote < ActiveRecord::Base
-
-  def random_quote
-    count = Quote.count
-    Quote.offset(rand(count)).first
+  def self.random_quote
+    Quote.all.shuffle.sample
   end
-
 end

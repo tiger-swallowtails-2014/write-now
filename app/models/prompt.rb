@@ -1,8 +1,5 @@
 class Prompt < ActiveRecord::Base
-
-  def random_prompt
-    count = Prompt.count
-    Prompt.offset(rand(count)).first
+  def self.random_prompt
+    Prompt.all.shuffle.sample
   end
-
 end
