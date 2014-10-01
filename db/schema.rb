@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20141001163629) do
 
   create_table "milestones", force: true do |t|
     t.integer  "wordcount",  null: false
+    t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

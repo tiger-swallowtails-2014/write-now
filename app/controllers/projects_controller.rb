@@ -44,13 +44,13 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.update_attributes(project_params)
 
-    @project.milestones.create!(wordcount: project_params[:current_wordcount])
-    p @project.milestones + " OUR MILESTONES"
+    @milestones = @project.milestones.create!(wordcount: project_params[:current_wordcount])
+
     @words_left = @project.num_words_to_goal
     @time_left = @project.time_until_deadline
     @pace_needed = @project.calculate_pace.floor
     @percent_complete = @project.calc_words_percent_completed.round(0)
-    render json: [@words_left, @time_left, @pace_needed, @percent_complete]
+    render json: [@words_left, @time_left, @pace_needed, @percent_complete, @milestones]
   end
 
   def destroy
