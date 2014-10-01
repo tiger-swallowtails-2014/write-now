@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
   belongs_to :user
+  has_many :milestones
   validates :title, :wordcount_goal, :current_wordcount, presence: true
   validates :title, length: { in: 1..130 }
   validates :wordcount_goal, :current_wordcount, numericality: true
