@@ -1,7 +1,13 @@
+<h1>Sign Up</h1>
+<div>
 <%= form_for @user do |f| %>
-  <%= f.label :email , "Email"%>
   <%= f.email_field :email %>
-  <%= f.label :password %>
+  <%= f.label :email , "Email"%>
+</div>
+<div>
   <%= f.password_field :password  %>
-  <%= f.submit "Sign up" %>
+  <%= f.label :password %>
+</div>
+
+  <%= f.submit "Sign up", class: "btn-success" %>
 <% end %>

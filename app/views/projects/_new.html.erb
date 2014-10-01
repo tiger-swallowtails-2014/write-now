@@ -1,14 +1,26 @@
 <%= form_for [@user, @project] do |f| %>
+  <div>
   <%= f.label :title, "Title" %>
-  <%= f.text_field :title %>
-
-  <%= f.label :wordcount_goal, "Wordcount Goal" %>
-  <%= f.text_field :wordcount_goal %>
-  <div class="unitToggle">
-    <button class="toggleDeadlineUnitHours">Hours</button>
-    <button class="toggleDeadlineUnitDate">Date</button>
+  <%= f.text_field :title, class: "form-control" %>
   </div>
-  <%= f.submit "Create Project!" %>
+
+  <div>
+  <%= f.label :wordcount_goal, "Wordcount Goal" %>
+  </div>
+
+  <div>
+  <%= f.text_field :wordcount_goal %>
+  </div>
+
+  <div class="unitToggle">
+    <%= f.label "Deadline:" %>
+    <div>
+    <button class="toggleDeadlineUnitHours btn-primary">Hours</button>
+    </div>
+    <button class="toggleDeadlineUnitDate btn-primary">Date</button>
+  </div>
+
+  <%= f.submit "Create Project!", class: "btn-success" %>
 <% end %>
 
 <script type="text/javascript">

@@ -1,10 +1,13 @@
 <h1>Login</h1>
-<%= form_tag login_path, method: :post do %>
-  <%= label_tag :email %>
-  <%= text_field_tag :email %> <br>
+<div>
+<%= form_for login_path, method: :post do |f| %>
+  <%= f.text_field :email %>
+  <%= f.label :email %>
+</div>
+<div>
+  <%= f.password_field :password %>
+  <%= f.label :password %>
+</div>
 
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-
-  <%= submit_tag "Log in"%>
+  <%= f.submit "Log in", class: "btn-success" %>
 <% end %>
