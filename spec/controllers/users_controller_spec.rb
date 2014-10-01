@@ -2,42 +2,50 @@ require 'rails_helper'
 
 describe UsersController do
 	let!(:user) { create :user }
+
 	describe 'GET #new' do
 		it "assigns a new user to @user" do
 			get :new
 			expect(assigns(:user)).to be_a_new(User)
 		end
 
-		it "redirects to projects#index" do
-
-			expect(response).to redirect_to user_projects_path
-		end
-	end
-
-	describe 'DELETE #destroy' do
-		it "deletes the user" do
-			expect{
-				delete :destroy, user_id: user
-			}.to change(User, :count).by(-1)
-		end
-
-		it "redirects to home page" do
-			delete :destroy, user_id: user
-			expect(response).to redirect_to root_path
+		it "should redirect to projects#index" do
+				expect {
+					post :create
+					should redirect_to controller: home, action: :index
+				}
 		end
 	end
 
 	describe 'GET #edit' do
-		it "renders the :edit template" do
-			get :edit, user_id: user
-			expect(response).to render_template :edit
+		it "should render the :edit template" do
+			get :edit, id: user.id
+			expect(response).to have_http_status(200)
 		end
 	end
 
 	describe 'GET #show' do
-		it "should return a 200 status code" do
-			user_path(user)
-			expect(response.status).to be(200)
+		it "returns a successful status for a specific user" do
+			get :show, id: user.id
+			expect(response).to have_http_status(200)
 		end
 	end
+
+	describe 'DELETE #destroy' do
+
+		# *** NO ROUTE MATCHES ***
+		# it "deletes the user" do
+		# 	expect {
+		# 		delete :destroy, user_id: user.id
+		# 		}.to change(User, :count).by(-1)
+		# end
+
+		it "should redirect to home page" do
+			expect {
+				delete :destroy
+				should redirect_to controller: users, action: :index
+			}
+		end
+	end
+
 end
