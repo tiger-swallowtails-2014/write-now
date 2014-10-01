@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   belongs_to :user
-  validates :title, :wordcount_goal, :active, :current_wordcount, presence: true
+  validates :title, :wordcount_goal, :current_wordcount, presence: true
   validates :title, length: { in: 1..130 }
   validates :wordcount_goal, :current_wordcount, numericality: true
   validate :project_deadline_date_cannot_be_in_the_past
@@ -53,6 +53,10 @@ class Project < ActiveRecord::Base
 
   def active_project(current_user)
     current_user.projects.last if current_user.projects.last.active
+  end
+
+  def set_inactive
+    self.update(active: false)
   end
 
   def completed?
