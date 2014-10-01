@@ -1,13 +1,17 @@
 var data = {
-  labels: ["January", "February", "March", "April", "May", "June", "July"],
+  // x axis: timestamp of each milestone
+  labels: ["8:00 am", "9:30 am", "12:00 pm", "1:30 pm", "3:00 pm", "5:00 pm", "7:30 pm"],
   datasets: [
     {
-        label: "My Second dataset",
-        fillColor: "rgba(151,187,205,0.5)",
-        strokeColor: "rgba(151,187,205,0.8)",
-        highlightFill: "rgba(151,187,205,0.75)",
-        highlightStroke: "rgba(151,187,205,1)",
-        data: [<%= project.dataset.join(", ") %>]
+        label: "My stub dataset",
+        fillColor: "rgba(0,0,0,0.2)",
+        strokeColor: "rgba(220,220,220,1)",
+        pointColor: "rgba(220,220,220,1)",
+        pointStrokeColor: "#fff",
+        pointHighlightFill: "#fff",
+        pointHighlightStroke: "rgba(220,220,220,1)",
+        data: [300,450,475,600,710,760,850]
+        // y axis: current wordcounts of each milestone
     }
   ]
 };

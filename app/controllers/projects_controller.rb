@@ -30,6 +30,7 @@ class ProjectsController < ApplicationController
     @user = current_user
     @project = Project.find(params[:id])
     @project.update_attributes(project_params)
+    @pace_needed = @project.calculate_pace
     @words_left = @project.num_words_to_goal
     @time_left = @project.time_until_deadline
     @pace_needed = @project.calculate_pace.floor
@@ -42,6 +43,9 @@ class ProjectsController < ApplicationController
     @user = current_user
     @project = Project.find(params[:id])
     @project.update_attributes(project_params)
+
+    @project.milestones.create!(wordcount: project_params[:current_wordcount])
+    p @project.milestones + " OUR MILESTONES"
     @words_left = @project.num_words_to_goal
     @time_left = @project.time_until_deadline
     @pace_needed = @project.calculate_pace.floor
