@@ -1,28 +1,23 @@
-<div class = user-image>
+<div class='user-image'>
   <%= image_tag @user.gravatar_url %>
-  <br>
   <h4><%= @user.email %></h4>
-  <br>
 </div>
 
-<div class = writing-prompt>
+<div class='writing-prompt'>
   <h2>Daily Writing Prompt</h2>
-  <%= @prompt.prompt %><br>
+  <%= @prompt.prompt %>
 </div>
 
 <div>
   <h3>Past Projects</h3>
   <% @past_projects.each do |project| %>
-  <%= project.title %>
+    <%= project.title %>
   <% end %>
-  <br>
-  <br>
   <h3>Current Project</h3>
   <%= @current_project.title %> (Your current project!)
 </div>
-<br>
-<br>
-<div class = quotes>
-  <%= @quote.quote %><br>
-  - <%= @quote.quoter %>
+
+<div class='quotes'>
+  <h4><%= @quote.quote %></h4>
+  <p>-- <%= @quote.quoter %></p>
 </div>
