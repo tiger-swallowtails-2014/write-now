@@ -6,7 +6,7 @@ body {
 }
 
 .maindiv {
-	background-color: #3BD6DF;
+	background-color: #C5EFF7;
 	font-family: "HelveticaNeue-Medium";
 }
 
@@ -15,6 +15,14 @@ body {
 	text-align: center;
 	font-weight: 900;
 	text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+}
+
+.taglineText {
+	color: #F39C12;
+	font-family: 'Kaushan Script', cursive;
+	font-size: 300%;
+	margin-left: 20%;
+	text-shadow: 0 1px 5px rgba(0,0,0,0.2);
 }
 
 #typed-cursor {
