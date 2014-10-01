@@ -8,6 +8,10 @@ class ProjectsController < ApplicationController
     @user = current_user
     @project = @user.projects.build(project_params)
     if @project.save
+      if @user.projects.count == 1
+        @user.badges.build(badge_name: "First Project Created!", award_trigger: "project1 #create success")
+        @user.save
+      end
       redirect_to root_path
     else
       flash.now[:error] = "Learn how to type ... if you want to be a writer."
