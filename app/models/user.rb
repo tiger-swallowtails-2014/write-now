@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
   has_many :projects
+  has_and_belongs_to_many :badges
   validates :email, :password_digest, presence: true
   validates :email, length: { minimum: 1 }
   validates :email, uniqueness: true
@@ -23,7 +24,5 @@ class User < ActiveRecord::Base
   end
 
   include Gravtastic
-  gravtastic :size => 120,
-            :default => "identicon"
-
+  gravtastic size: 120, default: "identicon"
 end
