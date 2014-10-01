@@ -2,27 +2,36 @@
   <%= image_tag @user.gravatar_url %>
   <h4><%= @user.email %></h4>
 </div>
-
+<hr>
+<div class="badges">
+  <h2>Achievements</h2>
+  <% @badges.each do |badge| %>
+    <h5><%= badge.badge_name %></h5>
+  <% end %>
+</div>
+<hr>
+<% if @past_projects %>
+  <div class="past-projects">
+    <h3>Past Projects</h3>
+    <% @past_projects.each do |project| %>
+      <%= project.title %>
+    <% end %>
+  </div>
+<% end %>
+<div class="current-projects">
+  <h3>Current Project</h3>
+  <% if @user.active_projects? %>
+    <%= @current_project.title %> (Your current project!)
+  <% else %>
+    No active projects
+  <% end %>
+</div>
+<hr>
 <div class='writing-prompt'>
   <h2>Daily Writing Prompt</h2>
   <%= @prompt.prompt %>
 </div>
-
-<div>
-  <h3>Past Projects</h3>
-  <% @past_projects.each do |project| %>
-    <%= project.title %>
-  <% end %>
-  <h3>Current Project</h3>
-
-  <% if @user.active_projects? %>
-     <%= @current_project.title %> (Your current project!)
-   <% else %>
-     No active projects
-   <% end %>
-
-</div>
-
+<hr>
 <div class='quotes'>
   <h4><%= @quote.quote %></h4>
   <p>-- <%= @quote.quoter %></p>

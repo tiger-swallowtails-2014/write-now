@@ -24,6 +24,7 @@ class UsersController < ApplicationController
     end
     @quote = Quote.random_quote
     @prompt = Prompt.random_prompt
+    @badges = @user.badges
   end
 
   def edit
