@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new', as: 'signup_form'
   post '/users' => 'users#create', as: 'signup'
 
+  patch '/users/:user_id/projects/:id/wordcount' => 'projects#update_wordcount', as: 'update_wordcount'
+
   # nested users and projects resources
   resources :users do
     resources :projects

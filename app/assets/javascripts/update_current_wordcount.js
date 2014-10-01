@@ -1,10 +1,13 @@
-$(function(){
-	$('.edit_project').on('ajax:success', function(x,json,z){
-		var words_left = json[0]
-		var time_left = json[1]
-		var pace_needed = json[2]
-		$('.wordsLeft').text(words_left);
-		$('.timeLeft').text(time_left);
-		$('.paceNeeded').text(pace_needed);
-	})
+$(function() {
+	$('#updateWordCount').on('ajax:success', function(x,json,z, e) {
+		var wordsLeft = json[0];
+		var timeLeft = json[1];
+		var paceNeeded = json[2];
+    var percentComplete = json[3];
+    $('.wordsLeft').text(wordsLeft);
+    $('.timeLeft').text(timeLeft);
+    $('.paceNeeded').text(paceNeeded);
+    $('.progress .progress-bar').css("width", percentComplete + "%");
+    $('#percentComplete').text(percentComplete + "%");
+  });
 });

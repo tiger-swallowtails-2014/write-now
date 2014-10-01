@@ -17,14 +17,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @past_projects = @user.past_projects
-    # @past_projects = @user.projects.slice(0..-2)
     if @user.active_projects?
       @current_project = @user.get_project
     else
       @current_project = ""
     end
-    @quote = Quote.new.random_quote
-    @prompt = Prompt.new.random_prompt
+    @quote = Quote.random_quote
+    @prompt = Prompt.random_prompt
   end
 
   def edit

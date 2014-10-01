@@ -5,15 +5,17 @@
 <h3><%= @pace_unit.capitalize%>s left: <span class="timeLeft"><%= @time_left %></span></h3>
 
 <h3>Pace needed: <span class="paceNeeded"><%= @pace_needed %></span> words per <%= @pace_unit %></h3>
-<%= link_to "Edit Project", edit_user_project_path(:user_id => current_user.id, :id => @project.id) %>
+<div class="project_links">
+  <%= link_to "Edit Project", edit_user_project_path(:user_id => current_user.id, :id => @project.id), id: 'editProjectForm', remote: true %>
 
-<%= link_to "Delete Project", user_project_path(:user_id => current_user.id, :id => @project.id), :method => :delete %>
+	<%= link_to "Archive Project" %>
 
-<%= link_to "Archive Project" %>
+  <%= link_to "Delete Project", user_project_path(:user_id => current_user.id, :id => @project.id), :method => :delete %>
+</div>
 
 <%= render partial: 'projects/new_current_wordcount' %>
 <div class="progress">
   <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width: <%= @percent_complete %>%">
-    <%= @project.wordcount_goal - @words_left %>
+    <span id='percentComplete'><%= @percent_complete.round(0) %> %</span>
   </div>
 </div>
