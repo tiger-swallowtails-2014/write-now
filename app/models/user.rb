@@ -5,8 +5,17 @@ class User < ActiveRecord::Base
   validates :email, length: { minimum: 1 }
   validates :email, uniqueness: true
 
+
   def get_project
-    self.projects.last.active_project(self)
+    projects.last.active_project(self)
+  end
+
+  def active_projects?
+    projects.any? { |project| project.active? }
+  end
+
+  def past_projects
+    projects if projects.any? && !active_projects?
   end
 
   def get_new_project_form

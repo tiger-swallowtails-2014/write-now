@@ -5,14 +5,12 @@
     <% if @successful %>
       <h2>Great job achieving your goals!</h2>
 
-
-
-
+      <%= link_to "create another project", root_path %>
 
     <% else %>
       <h2>Try harder next time, lazy ass</h2>
 
-
+      <%= link_to "create another project", root_path %>
 
     <% end %>
   </div>

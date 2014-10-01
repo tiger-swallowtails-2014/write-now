@@ -16,8 +16,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @past_projects = @user.projects.slice(0..-1)
-    @current_project = @user.projects.last
+    @past_projects = @user.past_projects
+    if @user.active_projects?
+      @current_project = @user.get_project
+    else
+      @current_project = ""
+    end
     @quote = Quote.random_quote
     @prompt = Prompt.random_prompt
   end
