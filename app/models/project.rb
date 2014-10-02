@@ -68,6 +68,14 @@ class Project < ActiveRecord::Base
     self.pace_unit == "day" ? self.days_to_completion : self.hours_to_completion
   end
 
+  def time_start_to_finish
+    self.pace_unit == "day" ? self.max_days_start_to_finish : self.goal_time_limit
+  end
+
+  def max_days_start_to_finish
+    (self.goal_deadline_date - self.created_at.to_date).to_f
+  end
+
   def days_to_completion
     (Date.today - self.created_at.to_date).to_f
   end
