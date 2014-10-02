@@ -6,6 +6,9 @@ class Project < ActiveRecord::Base
   validates :wordcount_goal, :current_wordcount, numericality: true
   validate :project_deadline_date_cannot_be_in_the_past
 
+  validates :goal_time_limit,    presence: true, if: "goal_deadline_date.blank?"
+  validates :goal_deadline_date, presence: true, if: "goal_time_limit.blank?"
+
   def project_deadline_date_cannot_be_in_the_past
     errors.add(:goal_deadline_date, "has to be in the future!") if goal_deadline_date && goal_deadline_date < Date.today
   end
@@ -54,6 +57,14 @@ class Project < ActiveRecord::Base
 
   def active_project(current_user)
     current_user.projects.last if current_user.projects.last.active
+  end
+
+  def time_start_to_finish
+    self.pace_unit == "day" ? self.days_start_to_finish : self.goal_time_limit
+  end
+
+  def days_start_to_finish
+    (self.goal_deadline_date - self.created_at.to_date).to_f
   end
 
   def set_inactive
