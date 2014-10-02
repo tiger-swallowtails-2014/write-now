@@ -1,5 +1,5 @@
-<div>
-  <h1>Edit your Project!</h1>
+<div class='editProjectForm'>
+  <h3>Edit your Project!</h3>
   <%= form_for [@user, @project], url: user_project_path(@user, @project), method: :patch, html: { id: 'updateProject', class: 'form-inline', role: 'form' } do |f| %>
   <div class="form-group">
     <div class="input-group">
