@@ -8,7 +8,7 @@
 <div class="project_links">
   <%= link_to "Edit Project", edit_user_project_path(:user_id => current_user.id, :id => @project.id), id: 'editProjectForm', remote: true %>
 
-	<%= link_to "Archive Project" %>
+  <%= link_to "Archive Project" %>
 
   <%= link_to "Delete Project", user_project_path(:user_id => current_user.id, :id => @project.id), :method => :delete %>
 </div>
@@ -19,5 +19,3 @@
     <span id='percentComplete'><%= @percent_complete.round(0) %> %</span>
   </div>
 </div>
-
-<canvas id="chart" width="1000" height="400"></canvas>
