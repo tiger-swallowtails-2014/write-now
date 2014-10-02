@@ -24,6 +24,10 @@ body {
     color: #EBA500;
     text-shadow: 0 1px 5px rgba(0,0,0,0.5);
 }
+.nav.navbar-nav.navbar-right li .dropLink {
+    color: #000;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+}
 
 .wrapper {
     text-align: center;
@@ -318,7 +322,6 @@ body {
 .badges h5, .current-projects h5, .writing-prompt h5 {
     color: #EBA500;
     font-size: 15pt;
-
 }
 
 .current-projects h3 {
