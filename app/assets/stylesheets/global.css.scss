@@ -1,0 +1,128 @@
+/*
+Necessary top-padding for fixed nav-bar! Don't remove this style.
+*/
+body {
+  padding-top: 50px;
+}
+
+.navbar.navbar-inverse.navbar-fixed-top {
+    background-color: #18506E;
+    height: 55px;
+    .navbar-brand {
+        color: #EBA500;
+    }
+    margin: 15px 15px;
+    border: 1px solid #EBA500;
+    border-radius: 5px;
+}
+
+#headerSection {
+    margin-top: 30px;
+}
+
+.nav.navbar-nav.navbar-right li a {
+    color: #EBA500;
+    text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+}
+
+.wrapper {
+    text-align: center;
+}
+.maindiv {
+	background-color: #F6F0E8;
+	font-family: "HelveticaNeue-Medium";
+}
+
+.main_header {
+	font-size: 970%;
+	text-align: center;
+	font-weight: 900;
+	text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+}
+
+.taglineText {
+	color: #F39C12;
+	font-family: 'Kaushan Script', cursive;
+	font-size: 300%;
+	text-shadow: 0 1px 5px rgba(0,0,0,0.2);
+}
+
+.tagline {
+    margin: auto;
+    display: none;
+}
+
+#typed-cursor {
+	color: #2E3D48;
+	font-weight: 100;
+	font-size: 1000%;
+}
+
+#typed-cursor.blinking {
+  -webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes "blink" {
+    from,to {
+        color: transparent;
+    }
+    50% {
+        color: #333333;
+    }
+}
+
+@-moz-keyframes blink {
+	from,to {
+        color: transparent;
+    }
+    50% {
+        color: #333333;
+    }
+}
+
+@-webkit-keyframes "blink" {
+	from,to {
+        color: transparent;
+    }
+    50% {
+        color: #333333;
+    }
+}
+
+@-ms-keyframes "blink" {
+	from,to {
+        color: transparent;
+    }
+    50% {
+        color: #333333;
+    }
+}
+
+@-o-keyframes "blink" {
+	from,to {
+        color: transparent;
+    }
+    50% {
+        color: #333333;
+    }
+    .quotes {
+        font-size: 1.5em;
+    }
+}
+
+
+@media (max-width: 675px) {
+    .main_header {
+        font-size: 600%;
+    }
+}
+
+@media (max-width: 500px) {
+    .main_header {
+        font-size: 440%;
+    }
+}
