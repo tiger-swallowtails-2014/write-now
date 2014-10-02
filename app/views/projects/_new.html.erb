@@ -1,28 +1,39 @@
 <div class="new-project">
   <h1>Create a new project!</h1>
-  <%= form_for [@user, @project] do |f| %>
-    <%= f.label :title, "Title" %>
-    <%= f.text_field :title %>
-
-    <%= f.label :wordcount_goal, "Wordcount Goal" %>
-    <%= f.text_field :wordcount_goal %>
-    <div class="unitToggle">
-      <button class="toggleDeadlineUnitHours">Hours</button>
-      <button class="toggleDeadlineUnitDate">Date</button>
+  <%= form_for [@user, @project], html: { class: 'form-inline', role: 'form' } do |f| %>
+  <div class="form-group">
+    <div class="input-group">
+      <%= f.text_field :title, class: 'form-control', placeholder: 'title' %>
     </div>
-    <%= f.submit "Create Project!" %>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <%= f.text_field :wordcount_goal, class: 'form-control', placeholder: 'wordcount goal' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="unitToggle">
+        <button class="toggleDeadlineUnitHours btn btn-default">Hours till Deadline</button>
+        <span>or</span>
+        <button class="toggleDeadlineUnitDate btn btn-default">Deadline Date</button>
+      </div>
+    </div>
+  </div>
+  <br />
+  <%= f.submit "Create Project!", class: 'btn btn-default create-project' %>
   <% end %>
 
   <script type="text/javascript">
     $('.toggleDeadlineUnitDate').on('click', function(e) {
       e.preventDefault();
-      $(this).replaceWith("<label for='project_goal_deadline_date'>Goal Deadline Date</label><input type='date' name='project[goal_deadline_date]' id='project_goal_deadline_date'></input>");
+      $(this).parent().replaceWith("<input type='date' name='project[goal_deadline_date]' id='project_goal_deadline_date' class='form-control'></input>");
       $('.toggleDeadlineUnitHours').remove();
     });
 
     $('.toggleDeadlineUnitHours').on('click', function(e) {
       e.preventDefault();
-      $(this).replaceWith("<label for='project_goal_time_limit'>Goal Time Limit</label> <input type='text' name='project[goal_time_limit]' id='project_goal_time_limit'></input> <label>hours</label>");
+      $(this).parent().replaceWith("<input type='text' name='project[goal_time_limit]' id='project_goal_time_limit' class='form-control' placeholder='hours till deadline'></input>");
       $('.toggleDeadlineUnitDate').remove();
     });
   </script>
