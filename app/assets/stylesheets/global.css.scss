@@ -11,7 +11,7 @@ body {
     .navbar-brand {
         color: #EBA500;
     }
-    margin: 15px 15px;
+    // margin: 15px 15px;
     border: 1px solid #EBA500;
     border-radius: 5px;
 }
@@ -181,6 +181,50 @@ body {
     }
     .unitToggle span {
         margin: 0 10px;
+    }
+}
+
+#updateProject {
+    padding-top: 10px;
+    h1 {
+        color: #EBA500;
+        text-shadow: 0 1px 2px #18506E;
+        padding-bottom: 10px;
+    }
+    .btn.btn-default {
+        border: 1px solid #18506E;
+        color: #EBA500;
+    }
+    input {
+        border: 1px solid #18506E;
+        color: #EBA500;
+    }
+    .input-group-addon {
+        border: 1px solid #18506E;
+        color: #EBA500;
+    }
+}
+
+.editAccount {
+    padding-top: 10px;
+    margin-bottom: 15px;
+
+    h1 {
+        color: #EBA500;
+        text-shadow: 0 1px 2px #18506E;
+        padding-bottom: 10px;
+    }
+    .btn.btn-default {
+        border: 1px solid #18506E;
+        color: #EBA500;
+    }
+    input {
+        border: 1px solid #18506E;
+        color: #EBA500;
+    }
+    .input-group-addon {
+        border: 1px solid #18506E;
+        color: #EBA500;
     }
 }
 
