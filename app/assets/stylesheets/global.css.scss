@@ -228,6 +228,82 @@ body {
     }
 }
 
+.updateWordCount {
+    padding-top: 10px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+
+    h1 {
+        color: #EBA500;
+        text-shadow: 0 1px 2px #18506E;
+        padding-bottom: 10px;
+    }
+    .btn.btn-default {
+        border: 1px solid #18506E;
+        color: #EBA500;
+    }
+    input {
+        border: 1px solid #18506E;
+        color: #EBA500;
+    }
+    .input-group-addon {
+        border: 1px solid #18506E;
+        color: #EBA500;
+    }
+    label {
+        color: #18506E;
+        font-size: 12pt;
+        padding: 5px;
+    }
+}
+
+.progress {
+    margin-top: 15px;
+    border: 1px solid #EBA500;
+}
+
+.progress-bar {
+
+}
+
+.currentProject {
+    h1, h2, h3, h4, h5, h6, li {
+        color: #18506E;
+    }
+    a {
+        color: #EBA500;
+        text-decoration: underline;
+    }
+    .col-md-12 {
+        padding: 0;
+    }
+    p {
+        font-size: 35pt;
+        color: #EBA500;
+    }
+    h1 {
+        font-size: 40pt;
+    }
+    span {
+        color: #EBA500;
+    }
+}
+.projectDivider {
+    background-color: #18506E;
+    height: 1px;
+    width: 70%;
+}
+
+.editProjectForm {
+    label, h3 {
+        color: #18506E;
+    }
+    .btn.btn-default {
+        margin-top: 24px;
+    }
+    margin-bottom: 20px;
+}
+
 @media (max-width: 675px) {
     .main_header {
         font-size: 600%;

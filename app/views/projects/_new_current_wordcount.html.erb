@@ -1,7 +1,8 @@
-<%= form_for [@user, @project], remote: true, url: update_wordcount_path(@user, @project), html: { id: 'updateWordCount' } do |f| %>
-	<%= f.label :current_wordcount, "Current Wordcount" %>
-	<%= f.text_field :current_wordcount %>
+<div class="updateWordCount">
+  <%= form_for [@user, @project], remote: true, url: update_wordcount_path(@user, @project), html: { id: 'updateWordCount', class: 'form-inline', role: 'form' } do |f| %>
+  <%= f.text_field :current_wordcount, class: 'form-control', placeholder: 'current wordcount' %>
 
-	<%= f.submit "Update wordcount", :class => 'updateCurrentWordcount' %>
+  <%= f.submit "Update wordcount", class: 'updateCurrentWordcount btn btn-default' %>
 
-<% end %>
+  <% end %>
+</div>
