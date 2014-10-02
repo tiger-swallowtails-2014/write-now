@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
 
   def get_project
-    projects.last.active_project(self)
+    projects.select { |project| project.active }.first
   end
 
   def active_projects?
@@ -16,7 +16,9 @@ class User < ActiveRecord::Base
   end
 
   def past_projects
-    projects if projects.any? && !active_projects?
+    if projects.any?
+      return projects.select { |project| !project.active }
+    end
   end
 
   def get_new_project_form

@@ -1,38 +1,47 @@
-<div class='user-image'>
-  <%= image_tag @user.gravatar_url %>
-  <h4><%= @user.email %></h4>
-</div>
-<hr>
-<div class="badges">
-  <h2>Achievements</h2>
-  <% @badges.each do |badge| %>
-    <h5><%= badge.badge_name %></h5>
-  <% end %>
-</div>
-<hr>
-<% if @past_projects %>
-  <div class="past-projects">
-    <h3>Past Projects</h3>
-    <% @past_projects.each do |project| %>
-      <%= project.title %>
-    <% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class='user-image col-md-12'>
+      <h1>WriteNow</h1>
+      <%= image_tag @user.gravatar_url %>
+      <h4><%= @user.email %></h4>
+    </div>
   </div>
-<% end %>
-<div class="current-projects">
-  <h3>Current Project</h3>
-  <% if @user.active_projects? %>
-    <%= @current_project.title %> (Your current project!)
-  <% else %>
-    No active projects
-  <% end %>
-</div>
-<hr>
-<div class='writing-prompt'>
-  <h2>Daily Writing Prompt</h2>
-  <%= @prompt.prompt %>
-</div>
-<hr>
-<div class='quotes'>
-  <h4><%= @quote.quote %></h4>
-  <p>-- <%= @quote.quoter %></p>
+  <div class="row">
+    <div class="current-projects col-md-6">
+      <h3>Current Project</h3>
+      <% if @user.active_projects? %>
+      <h5><%= @current_project.title %></h5>
+      <% else %>
+      <h5>No active projects</h5>
+      <% end %>
+    </div>
+    <div class="current-projects col-md-6">
+      <% if @past_projects %>
+      <div class="past-projects">
+        <h3>Past Projects</h3>
+        <% @past_projects.each do |project| %>
+        <h5><%= project.title %></h5>
+        <% end %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <hr class='projectDivider' />
+  <div class="row">
+    <div class="col-md-6">
+      <div class="badges">
+        <h3>Achievements</h3>
+        <h5><%= @badges.first.badge_name %></h5>
+      </div>
+    </div>
+    <div class='writing-prompt col-md-6'>
+      <h3>Daily Prompt</h3>
+      <h5><%= @prompt.prompt %></h5>
+    </div>
+  </div>
+  <hr class='projectDivider' />
+  <div class='quotes'>
+    <h4><%= @quote.quote %></h4>
+    <p>-- <%= @quote.quoter %></p>
+  </div>
 </div>
