@@ -157,6 +157,31 @@ body {
 
 .new-project {
     padding-top: 10px;
+    h1 {
+        color: #EBA500;
+        text-shadow: 0 1px 2px #18506E;
+        padding-bottom: 10px;
+    }
+    .btn.btn-default {
+        border: 1px solid #18506E;
+        color: #EBA500;
+    }
+    input {
+        border: 1px solid #18506E;
+        color: #EBA500;
+    }
+    .input-group-addon {
+        border: 1px solid #18506E;
+        color: #EBA500;
+    }
+    .create-project {
+        width: 130px;
+        height: 50px;
+        margin-top: 10px;
+    }
+    .unitToggle span {
+        margin: 0 10px;
+    }
 }
 
 @media (max-width: 675px) {
